@@ -1,0 +1,95 @@
+query getAlldata{
+    user{
+        name
+        id
+    }
+    quotes{
+        name
+        by
+    }
+}
+
+================================
+search user with userid
+query searchMydata{
+  user(id:"232"){
+    name
+    id
+    quotes{
+      name
+    }
+  }
+}
+======================================
+search quotes for partcular user 
+query searchparticularquote{
+  iquotes(by:"233"){
+    name
+    by
+  }
+}
+
+
+============================
+using query variables
+query getuser($userid:ID){
+user(id:$userid){
+  id
+  name
+}
+}
+
+{
+  "userid":"231"
+}
+===================
+
+
+get all users
+
+query getallUser{
+  users{
+    name
+    email
+  }
+}
+
+====================
+mutation query using query variable
+mutation newusers($userNew:UserInput!){
+  signUpUserDummy(userNew:$userNew){
+    id
+    name
+    email
+    password
+  }
+}
+
+{
+  "userNew": {
+    "name":"amit",
+    "email":"amit@gmail.com",
+    "password":"amit@123"
+  }
+}
+
+
+mongodb+srv://rohit:rohit12345@cluster0.3tu6phd.mongodb.net/graphqlDb?retryWrites=true&w=majority&appName=Cluster0
+=================
+signin query user with token
+
+mutation signInQuery($userSignin:UserSigninInput!){
+ user:signinUser(userSignin:$userSignin){
+   token
+  }
+}
+
+============================
+
+create quotes 
+mutation createQuote{
+  createQuote(name:"i am dfdfdfdf")
+}
+{
+"authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjcxM2I0ZGZlNjEyZDJhMGM4ZDIxMmYiLCJpYXQiOjE3MTg3MTM3NjF9.WjZICCmPG5198dNG3zAqCB3Dk1mOrPrNM4h07w-6xJA"
+}
